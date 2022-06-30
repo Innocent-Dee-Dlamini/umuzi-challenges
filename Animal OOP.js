@@ -1,67 +1,62 @@
 class Animal {
+  #name;
   constructor(name) {
-    this.name = name;
+    this.#name = name;
   }
-
   sound() {
-    console.log("sound...");
+    return `sound...`;
   }
-
   eat() {
-    console.log(`${this.name} eats`);
+    return `${this.#name} eats`;
   }
 }
 
 class Dog extends Animal {
-  constructor(name) {
+  constructor(name = "Rax") {
     super(name);
   }
 
   sound() {
-    console.log("Dog barks");
+    return `Bark`;
   }
 }
 
 class Cat extends Animal {
-  constructor(name) {
+  constructor(name = "Storm") {
     super(name);
   }
 
   sound() {
-    console.log("Cat meows");
+    return `Meow`;
   }
 }
 
 class Home {
-  //declairing the petArray which will hold the home pets
-  constructor(petsArr) {
-    this.petsArr = petsArr;
+  constructor() {
+    this.petsArr = [];
   }
-  //getpet will return an array of pets that the home class contains
-  getPet() {
-    return this.petsArr;
-  }
-  //adopt pet add a pet to the home object, the pet object must exist first
   adoptPet(pet) {
     this.petsArr.push(pet);
   }
-  //create makeAllSounds wich will return the obj.sound for each animal at home
   makeAllSounds() {
     for (let i = 0; i < this.petsArr.length; i++) {
-      this.petsArr[i].sound();
+     return this.petsArr[i].sound();
     }
   }
 }
 
-let danger = new Dog("Danger");
-let rax = new Dog("Rax");
-let storm = new Cat("Storm");
+const home = new Home();
+const dog1 = new Dog();
+const dog2 = new Dog();
+const cat = new Cat();
 
-let Maseko = new Home([]);
+home.makeAllSounds();
+home.adoptPet(dog1);
+home.makeAllSounds();
 
-Maseko.adoptPet(danger);
-Maseko.adoptPet(storm);
-Maseko.adoptPet(rax);
+home.adoptPet(cat);
+console.log(home.makeAllSounds());
+console.log(home.petsArr);
 
-console.log(Maseko.getPet());
-Maseko.makeAllSounds();
+home.adoptPet(dog2);
+home.makeAllSounds();
